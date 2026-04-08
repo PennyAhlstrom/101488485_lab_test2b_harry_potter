@@ -33,12 +33,12 @@ export class CharacterList implements OnInit {
   error = '';
 
   ngOnInit(): void {
-    // Load all characters once
+    // Initial page load: get all characters and build dropdown options
     this.characterService.getCharacters().subscribe({
       next: (characters) => {
         this.allCharacters = characters;
+        this.filteredCharacters = characters;
         this.houseOptions = this.characterService.getHouseOptions(characters);
-        this.applyFilter();
         this.loading = false;
       },
       error: () => {
@@ -50,18 +50,35 @@ export class CharacterList implements OnInit {
 
   onHouseChanged(house: string): void {
     this.selectedHouse = house;
-    this.applyFilter();
-  }
+    this.loading = true;
+    this.error = '';
 
-  applyFilter(): void {
-    if (this.selectedHouse === 'All') {
+    // Show all characters
+    if (house === 'All') {
       this.filteredCharacters = this.allCharacters;
+      this.loading = false;
       return;
     }
 
-    this.filteredCharacters = this.allCharacters.filter((character) => {
-      const house = character.house?.trim() || 'Unknown';
-      return house === this.selectedHouse;
+    // Unknown is not a real API house route, so filter locally
+    if (house === 'Unknown') {
+      this.filteredCharacters = this.allCharacters.filter(
+        (character) => !character.house?.trim()
+      );
+      this.loading = false;
+      return;
+    }
+
+    // Real houses use the house-specific endpoint
+    this.characterService.getCharactersByHouse(house).subscribe({
+      next: (characters) => {
+        this.filteredCharacters = characters;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Failed to load filtered characters.';
+        this.loading = false;
+      }
     });
   }
 

@@ -8,25 +8,35 @@ import { Character } from '../models/character.model';
 })
 export class CharacterService {
   private http = inject(HttpClient);
-  private apiUrl = 'https://hp-api.onrender.com/api/characters';
+  private baseUrl = 'https://hp-api.onrender.com/api';
 
-  // Fetch all characters from the API
+  // Get all characters
   getCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(this.apiUrl);
+    return this.http.get<Character[]>(`${this.baseUrl}/characters`);
   }
 
-  // Build distinct house options for the filter dropdown
+  // Get one character by id
+  // API returns an array with one item, so map it to the first item
+  getCharacterById(id: string): Observable<Character | undefined> {
+    return this.http
+      .get<Character[]>(`${this.baseUrl}/character/${id}`)
+      .pipe(map((characters) => characters[0]));
+  }
+
+  // Get characters from one house
+  getCharactersByHouse(house: string): Observable<Character[]> {
+    return this.http.get<Character[]>(
+      `${this.baseUrl}/characters/house/${house.toLowerCase()}`
+    );
+  }
+
+  // Build dropdown options from all characters
   getHouseOptions(characters: Character[]): string[] {
     const houses = characters
       .map((character) => character.house?.trim() || 'Unknown');
 
-    return ['All', ...new Set(houses)].sort();
-  }
+    const uniqueHouses = [...new Set(houses)].filter((house) => house !== 'Unknown');
 
-  // Find one character by id
-  getCharacterById(id: string): Observable<Character | undefined> {
-    return this.getCharacters().pipe(
-      map((characters) => characters.find((character) => character.id === id))
-    );
+    return ['All', ...uniqueHouses.sort(), 'Unknown'];
   }
 }
