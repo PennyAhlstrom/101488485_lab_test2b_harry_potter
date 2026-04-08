@@ -91,4 +91,9 @@ export class CharacterList implements OnInit {
       ? image
       : 'https://via.placeholder.com/200x260?text=No+Image';
   }
+
+scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 }
