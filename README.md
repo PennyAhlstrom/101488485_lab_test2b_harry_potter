@@ -186,7 +186,7 @@ The application is deployed using **Vercel**.
 The main character list view displaying data fetched from the API. Each character is shown using Angular Material cards with name, house (or "Unknown"), and image. House-based color styling is applied dynamically.
 *(Displays all characters with house-colored cards)*
 
-![Character List](./screenshots/list-view.png)
+![Character List](./public/screenshots/list-view.png)
 
 ---
 
@@ -195,7 +195,7 @@ The main character list view displaying data fetched from the API. Each characte
 The filter functionality implemented using a reactive form dropdown. Selecting a house dynamically updates the displayed characters by calling the API endpoint or applying local filtering for "Unknown" values.
 *(Shows characters filtered by selected house)*
 
-![Filtered View](./screenshots/filter-view.png)
+![Filtered View](./public/screenshots/filter-view.png)
 
 ---
 
@@ -204,7 +204,7 @@ The filter functionality implemented using a reactive form dropdown. Selecting a
 The character details page accessed via Angular routing using a route parameter (`:id`). Displays extended information including species, ancestry, wand details, actor, and image, with house-based styling applied.
 *(Displays detailed information for a selected character)*
 
-![Details View](./screenshots/details-view.png)
+![Details View](./public/screenshots/details-view.png)
 
 ---
 
