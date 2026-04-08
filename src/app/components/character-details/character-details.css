@@ -13,6 +13,33 @@
   object-fit: cover;
 }
 
+/* Override Angular Material primary button text */
+:host ::ng-deep .mat-mdc-raised-button.mat-primary {
+  color: #020817 !important; /* your dark navy */
+}
+
+/* House colors (same as list) */
+.gryffindor {
+  background: #7f1d1d;
+}
+
+.slytherin {
+  background: #14532d;
+}
+
+.ravenclaw {
+  background: #1e3a8a;
+}
+
+.hufflepuff {
+  background: #854d0e;
+}
+
+.unknown {
+  background: #374151;
+}
+
+
 .details-content ul {
   margin-top: 4px;
 }

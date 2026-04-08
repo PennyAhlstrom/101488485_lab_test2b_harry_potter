@@ -48,4 +48,17 @@ export class CharacterDetails implements OnInit {
   getImage(image: string): string {
     return image?.trim() ? image : 'https://via.placeholder.com/300x380?text=No+Image';
   }
+
+  // Map house to CSS class for styling
+  getHouseClass(house: string): string {
+    const value = house?.trim().toLowerCase();
+
+    if (value === 'gryffindor') return 'gryffindor';
+    if (value === 'slytherin') return 'slytherin';
+    if (value === 'ravenclaw') return 'ravenclaw';
+    if (value === 'hufflepuff') return 'hufflepuff';
+
+    return 'unknown';
+  }
+
 }

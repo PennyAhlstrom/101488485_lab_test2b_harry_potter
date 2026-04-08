@@ -1,5 +1,8 @@
 @if (character) {
-  <mat-card class="details-card">
+  <mat-card 
+    class="details-card"
+    [ngClass]="getHouseClass(character.house)"
+    >
     <img [src]="getImage(character.image)" [alt]="character.name" />
 
     <div class="details-content">
