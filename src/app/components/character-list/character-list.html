@@ -1,17 +1,38 @@
-<!-- Character summary cards -->
-<div class="character-grid">
-  @for (character of characters; track character.id) {
-    <mat-card class="character-card" [routerLink]="['/characters', character.id]">
-      <img
-        mat-card-image
-        [src]="getImage(character.image)"
-        [alt]="character.name"
-      />
+<!-- Filter -->
+<app-character-filter
+  [houses]="houseOptions"
+  [selectedHouse]="selectedHouse"
+  (houseChanged)="onHouseChanged($event)"
+/>
 
-      <mat-card-content>
-        <h3>{{ character.name }}</h3>
-        <p><strong>House:</strong> {{ getHouseName(character.house) }}</p>
-      </mat-card-content>
-    </mat-card>
-  }
-</div>
+<!-- Loading -->
+@if (loading) {
+  <div class="center">
+    <mat-spinner></mat-spinner>
+  </div>
+}
+
+<!-- Error -->
+@if (error) {
+  <p>{{ error }}</p>
+}
+
+<!-- Character cards -->
+@if (!loading && !error) {
+  <div class="character-grid">
+    @for (character of filteredCharacters; track character.id) {
+      <mat-card class="character-card" [routerLink]="['/characters', character.id]">
+        <img
+          mat-card-image
+          [src]="getImage(character.image)"
+          [alt]="character.name"
+        />
+
+        <mat-card-content>
+          <h3>{{ character.name }}</h3>
+          <p><strong>House:</strong> {{ getHouseName(character.house) }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+}

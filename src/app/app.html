@@ -1,30 +1,9 @@
-<!-- App header -->
+<!-- Main app shell -->
 <mat-toolbar color="primary">
   Harry Potter Character Explorer
 </mat-toolbar>
 
 <div class="page">
-  <!-- Filter -->
-  <app-character-filter
-    [houses]="houseOptions"
-    [selectedHouse]="selectedHouse"
-    (houseChanged)="onHouseChanged($event)"
-  />
-
-  <!-- Loading state -->
-  @if (loading) {
-    <div class="center">
-      <mat-spinner></mat-spinner>
-    </div>
-  }
-
-  <!-- Error state -->
-  @if (error) {
-    <p>{{ error }}</p>
-  }
-
-  <!-- Character list -->
-  @if (!loading && !error) {
-    <app-character-list [characters]="filteredCharacters" />
-  }
+  <!-- Routed views render here -->
+  <router-outlet />
 </div>
