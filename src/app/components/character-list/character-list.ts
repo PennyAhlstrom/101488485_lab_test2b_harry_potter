@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Character } from '../../models/character.model';
 import { CharacterService } from '../../services/character.service';
 import { CharacterFilter } from '../character-filter/character-filter';
+import { HouseDisplayPipe } from '../../pipes/house-display.pipe';
 
 @Component({
   selector: 'app-character-list',
@@ -16,7 +17,8 @@ import { CharacterFilter } from '../character-filter/character-filter';
     RouterModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    CharacterFilter
+    CharacterFilter,
+    HouseDisplayPipe
   ],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css'
@@ -27,7 +29,7 @@ export class CharacterList implements OnInit {
   allCharacters: Character[] = [];
   filteredCharacters: Character[] = [];
   houseOptions: string[] = [];
-  selectedHouse = 'All';
+  selectedHouse = signal('All');
 
   loading = true;
   error = '';
@@ -49,7 +51,7 @@ export class CharacterList implements OnInit {
   }
 
   onHouseChanged(house: string): void {
-    this.selectedHouse = house;
+    this.selectedHouse.set(house);
     this.loading = true;
     this.error = '';
 

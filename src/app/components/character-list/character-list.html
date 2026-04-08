@@ -1,7 +1,7 @@
 <!-- Filter -->
 <app-character-filter
   [houses]="houseOptions"
-  [selectedHouse]="selectedHouse"
+  [selectedHouse]="selectedHouse()"
   (houseChanged)="onHouseChanged($event)"
 />
 
@@ -33,7 +33,7 @@
 
         <mat-card-content>
           <h3>{{ character.name }}</h3>
-          <p><strong>House:</strong> {{ getHouseName(character.house) }}</p>
+          <p><strong>House:</strong> {{ character.house | houseDisplay }}</p>
         </mat-card-content>
       </mat-card>
     }

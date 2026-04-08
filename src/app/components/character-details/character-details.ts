@@ -5,11 +5,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CharacterService } from '../../services/character.service';
 import { Character } from '../../models/character.model';
+import { HouseDisplayPipe } from '../../pipes/house-display.pipe';
 
 @Component({
   selector: 'app-character-details',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, MatCardModule, MatButtonModule, HouseDisplayPipe],
   templateUrl: './character-details.html',
   styleUrl: './character-details.css'
 })

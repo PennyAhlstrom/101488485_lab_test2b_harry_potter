@@ -1,26 +1,35 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-character-filter',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './character-filter.html',
   styleUrl: './character-filter.css'
 })
-export class CharacterFilter {
-  // House options received from parent
+export class CharacterFilter implements OnChanges {
   @Input() houses: string[] = [];
-
-  // Currently selected house
   @Input() selectedHouse = 'All';
 
-  // Send selected house back to parent
   @Output() houseChanged = new EventEmitter<string>();
 
-  onSelectionChange(value: string): void {
-    this.houseChanged.emit(value);
+  // Reactive form control for the dropdown
+  houseControl = new FormControl('All', { nonNullable: true });
+
+  constructor() {
+    this.houseControl.valueChanges.subscribe((value) => {
+      this.houseChanged.emit(value);
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // Keep control value in sync with parent input
+    if (changes['selectedHouse']) {
+      this.houseControl.setValue(this.selectedHouse, { emitEvent: false });
+    }
   }
 }

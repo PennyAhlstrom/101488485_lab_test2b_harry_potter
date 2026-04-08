@@ -10,7 +10,13 @@
 
       <p><strong>Species:</strong> {{ getValue(character.species) }}</p>
       <p><strong>House:</strong> {{ getHouseName(character.house) }}</p>
-      <p><strong>Wizard:</strong> {{ character.wizard ? 'Yes' : 'No' }}</p>
+      <p>
+        <strong>Wizard:</strong>
+        @switch (character.wizard) {
+            @case (true) { Yes }
+            @default { No }
+        }
+        </p>
       <p><strong>Ancestry:</strong> {{ getValue(character.ancestry) }}</p>
 
       <div class="wand-section">
