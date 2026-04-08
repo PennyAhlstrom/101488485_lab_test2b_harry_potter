@@ -182,33 +182,30 @@ The application is deployed using **Vercel**.
 ## 📸 Running Application Screenshots
 
 ### 🔹 Character List View
-
+**Caption:**  
+The main character list view displaying data fetched from the API. Each character is shown using Angular Material cards with name, house (or "Unknown"), and image. House-based color styling is applied dynamically.
 *(Displays all characters with house-colored cards)*
 
 ![Character List](./screenshots/list-view.png)
 
-**Caption:**  
-The main character list view displaying data fetched from the API. Each character is shown using Angular Material cards with name, house (or "Unknown"), and image. House-based color styling is applied dynamically.
 ---
 
 ### 🔹 Filtered View
-
+**Caption:**  
+The filter functionality implemented using a reactive form dropdown. Selecting a house dynamically updates the displayed characters by calling the API endpoint or applying local filtering for "Unknown" values.
 *(Shows characters filtered by selected house)*
 
 ![Filtered View](./screenshots/filter-view.png)
 
-**Caption:**  
-The filter functionality implemented using a reactive form dropdown. Selecting a house dynamically updates the displayed characters by calling the API endpoint or applying local filtering for "Unknown" values.
 ---
 
 ### 🔹 Character Details View
-
+**Caption:**  
+The character details page accessed via Angular routing using a route parameter (`:id`). Displays extended information including species, ancestry, wand details, actor, and image, with house-based styling applied.
 *(Displays detailed information for a selected character)*
 
 ![Details View](./screenshots/details-view.png)
 
-**Caption:**  
-The character details page accessed via Angular routing using a route parameter (`:id`). Displays extended information including species, ancestry, wand details, actor, and image, with house-based styling applied.
 ---
 
 ## 🧪 Future Improvements
@@ -236,5 +233,8 @@ This project is for academic purposes.
 
 ## 📌 Submission Links
 
-* GitHub Repository: https://github.com/PennyAhlstrom/101488485_lab_test2b_harry_potter
-* Live Deployment (Vercel): https://101488485-lab-test2b-harry-potter-rose.vercel.app/
+* GitHub Repository: 
+https://github.com/PennyAhlstrom/101488485_lab_test2b_harry_potter
+
+* Live Deployment (Vercel): 
+https://101488485-lab-test2b-harry-potter-rose.vercel.app/
