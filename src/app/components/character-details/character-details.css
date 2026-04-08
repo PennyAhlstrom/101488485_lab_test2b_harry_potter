@@ -15,10 +15,10 @@
 
 /* Override Angular Material primary button text */
 :host ::ng-deep .mat-mdc-raised-button.mat-primary {
-  color: #020817 !important; /* your dark navy */
+  color: #020817 !important; 
 }
 
-/* House colors (same as list) */
+/* House colors */
 .gryffindor {
   background: #7f1d1d;
 }
