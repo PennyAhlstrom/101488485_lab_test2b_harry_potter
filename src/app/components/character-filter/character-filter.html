@@ -1,1 +1,15 @@
-<p>character-filter works!</p>
+<!-- House filter dropdown -->
+<mat-form-field appearance="outline" class="filter-field">
+  <mat-label>Filter by House</mat-label>
+
+  <mat-select
+    [value]="selectedHouse"
+    (selectionChange)="onSelectionChange($event.value)"
+  >
+    @for (house of houses; track house) {
+      <mat-option [value]="house">
+        {{ house }}
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>
