@@ -21,7 +21,10 @@
 @if (!loading && !error) {
   <div class="character-grid">
     @for (character of filteredCharacters; track character.id) {
-      <mat-card class="character-card" [routerLink]="['/characters', character.id]">
+      <mat-card 
+      class="character-card"
+      [ngClass]="getHouseClass(character.house)" 
+      [routerLink]="['/characters', character.id]">
         <img
           mat-card-image
           [src]="getImage(character.image)"

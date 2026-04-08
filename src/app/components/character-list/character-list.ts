@@ -92,8 +92,20 @@ export class CharacterList implements OnInit {
       : 'https://via.placeholder.com/200x260?text=No+Image';
   }
 
-scrollToTop(): void {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+  // Return a CSS class based on the character's house
+  getHouseClass(house: string): string {
+    const value = house?.trim().toLowerCase();
+
+    if (value === 'gryffindor') return 'gryffindor';
+    if (value === 'slytherin') return 'slytherin';
+    if (value === 'ravenclaw') return 'ravenclaw';
+    if (value === 'hufflepuff') return 'hufflepuff';
+
+    return 'unknown';
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
 }

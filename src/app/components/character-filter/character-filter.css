@@ -2,3 +2,22 @@
   width: 250px;
   margin-bottom: 16px;
 }
+
+/* Make the selected value and label visible on dark backgrounds */
+:host ::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: #0f172a !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-label,
+:host ::ng-deep .mat-mdc-select-value,
+:host ::ng-deep .mat-mdc-select-arrow,
+:host ::ng-deep .mdc-floating-label {
+  color: #f8fafc !important;
+}
+
+/* Outline color */
+:host ::ng-deep .mdc-notched-outline__leading,
+:host ::ng-deep .mdc-notched-outline__notch,
+:host ::ng-deep .mdc-notched-outline__trailing {
+  border-color: #94a3b8 !important;
+}
