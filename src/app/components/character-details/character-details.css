@@ -1,0 +1,24 @@
+.details-card {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+}
+
+.details-card img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.details-content ul {
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .details-card {
+    grid-template-columns: 1fr;
+  }
+}

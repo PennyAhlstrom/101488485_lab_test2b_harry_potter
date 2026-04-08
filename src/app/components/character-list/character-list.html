@@ -1,1 +1,17 @@
-<p>character-list works!</p>
+<!-- Character summary cards -->
+<div class="character-grid">
+  @for (character of characters; track character.id) {
+    <mat-card class="character-card" [routerLink]="['/characters', character.id]">
+      <img
+        mat-card-image
+        [src]="getImage(character.image)"
+        [alt]="character.name"
+      />
+
+      <mat-card-content>
+        <h3>{{ character.name }}</h3>
+        <p><strong>House:</strong> {{ getHouseName(character.house) }}</p>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

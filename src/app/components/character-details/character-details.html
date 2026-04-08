@@ -1,1 +1,32 @@
-<p>character-details works!</p>
+@if (character) {
+  <mat-card class="details-card">
+    <img [src]="getImage(character.image)" [alt]="character.name" />
+
+    <div class="details-content">
+      <h2>{{ character.name }}</h2>
+
+      <p><strong>Species:</strong> {{ getValue(character.species) }}</p>
+      <p><strong>House:</strong> {{ getHouseName(character.house) }}</p>
+      <p><strong>Wizard:</strong> {{ character.wizard ? 'Yes' : 'No' }}</p>
+      <p><strong>Ancestry:</strong> {{ getValue(character.ancestry) }}</p>
+
+      <div class="wand-section">
+        <p><strong>Wand:</strong></p>
+        <ul>
+          <li><strong>Wood:</strong> {{ getValue(character.wand?.wood) }}</li>
+          <li><strong>Core:</strong> {{ getValue(character.wand?.core) }}</li>
+          <li><strong>Length:</strong> {{ getValue(character.wand?.length) }}</li>
+        </ul>
+      </div>
+
+      <p><strong>Actor:</strong> {{ getValue(character.actor) }}</p>
+
+      <a mat-raised-button color="primary" routerLink="/characters">
+        Back to List
+      </a>
+    </div>
+  </mat-card>
+} @else if (notFound) {
+  <p>Character not found.</p>
+  <a mat-raised-button color="primary" routerLink="/characters">Back to List</a>
+}
